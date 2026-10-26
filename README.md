@@ -202,7 +202,7 @@ The database script pre-seeds standard accounts for immediate testing:
 | Attribute | Value |
 | :--- | :--- |
 | **Portal URL** | `http://localhost:8080/CollegeNoticeBoard/login.jsp` |
-| **Email** | `aibin@college.edu` *(or `jeeval@college.edu`)* |
+| **Email** | `aibin@college.edu` |
 | **Password** | `student123` |
 | **Permissions** | Submit notices, manage profile, view personal notice statuses |
 
@@ -306,10 +306,9 @@ Digital-Campus-Notice-Board/
 
 ---
 
-## 👥 Authors & Credits
+## 👨‍💻 Author & Developer
 
-Crafted with dedication by:
-- **Jeeval Jolly Jacob**
+Designed and developed with dedication by:
 - **Aibin Joseph** ([@aibinjmca2527-dotcom](https://github.com/aibinjmca2527-dotcom))
 
 ---

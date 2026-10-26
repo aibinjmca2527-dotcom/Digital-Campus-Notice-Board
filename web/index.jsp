@@ -294,7 +294,7 @@
 </section>
 
 <footer>
-    <p>© 2024 College Notice Board Management System &nbsp;|&nbsp; Developed by Jeeval Jolly Jacob &amp; Aibin Joseph</p>
+    <p>© 2024–2026 College Notice Board Management System &nbsp;|&nbsp; Developed by Aibin Joseph</p>
 </footer>
 
 </body>

@@ -1,7 +1,7 @@
 -- ============================================================
 -- Database Creation Script for Digital Campus Notice Board
 -- Project: College Notice Board Management System
--- Authors: Jeeval Jolly Jacob & Aibin Joseph
+-- Author: Aibin Joseph
 -- ============================================================
 
 CREATE DATABASE IF NOT EXISTS `college_notice_board` 
@@ -79,7 +79,7 @@ INSERT INTO `admin` (`full_name`, `email`, `password`) VALUES
 -- Passwords: student123
 INSERT INTO `users` (`full_name`, `email`, `password`, `phone`, `department`, `role`) VALUES
 ('Aibin Joseph', 'aibin@college.edu', 'student123', '+91 9876543210', 'Computer Applications', 'student'),
-('Jeeval Jolly Jacob', 'jeeval@college.edu', 'student123', '+91 9876543211', 'Computer Science & Engineering', 'student'),
+('Alex Mathew', 'alex@college.edu', 'student123', '+91 9876543211', 'Computer Science & Engineering', 'student'),
 ('Sarah Smith', 'sarah.smith@college.edu', 'student123', '+91 9876543212', 'Information Technology', 'student');
 
 -- Sample Notices (Approved, Pending, and Rejected)
@@ -99,8 +99,8 @@ INSERT INTO `notices` (`title`, `description`, `category`, `status`, `user_id`, 
     'The timetable for the upcoming End Semester Examinations (Even Semester 2026) has been officially published by the Controller of Examinations. Please verify your hall tickets and dates on the college portal.',
     'announcement',
     'approved',
-    2,
-    'Jeeval Jolly Jacob',
+    1,
+    'Aibin Joseph',
     NOW() - INTERVAL 1 DAY,
     NOW() - INTERVAL 12 HOUR
 ),
