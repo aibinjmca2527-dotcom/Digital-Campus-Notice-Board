@@ -16,6 +16,10 @@ out/
 target/
 *.class
 
+# Database files
+database/
+*.sql
+
 # Package Archives (compiled distributions)
 dist/*.war
 *.ear

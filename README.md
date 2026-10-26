@@ -136,18 +136,56 @@ erDiagram
     }
 ```
 
-### 2. Import Database via MySQL CLI or phpMyAdmin
+### 2. SQL Setup Script
 
-**Option A — Using MySQL Terminal:**
-```bash
-mysql -u root -p < database/schema.sql
+You can copy and run the following queries in MySQL / phpMyAdmin:
+
+<details>
+<summary><b>Click to view MySQL Setup Script</b></summary>
+
+```sql
+CREATE DATABASE IF NOT EXISTS `college_notice_board`;
+USE `college_notice_board`;
+
+CREATE TABLE IF NOT EXISTS `users` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `full_name` VARCHAR(100) NOT NULL,
+    `email` VARCHAR(100) NOT NULL UNIQUE,
+    `password` VARCHAR(255) NOT NULL,
+    `phone` VARCHAR(20) DEFAULT NULL,
+    `department` VARCHAR(100) DEFAULT NULL,
+    `role` VARCHAR(20) NOT NULL DEFAULT 'student',
+    `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS `admin` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `full_name` VARCHAR(100) NOT NULL,
+    `email` VARCHAR(100) NOT NULL UNIQUE,
+    `password` VARCHAR(255) NOT NULL,
+    `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS `notices` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `title` VARCHAR(255) NOT NULL,
+    `description` TEXT NOT NULL,
+    `category` VARCHAR(50) NOT NULL,
+    `status` VARCHAR(20) NOT NULL DEFAULT 'pending',
+    `user_id` INT NOT NULL,
+    `author_name` VARCHAR(100) NOT NULL,
+    `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `reviewed_at` TIMESTAMP NULL DEFAULT NULL,
+    FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
+);
+
+-- Seed Default Admin
+INSERT INTO `admin` (`full_name`, `email`, `password`) VALUES
+('Chief Administrator', 'admin@college.edu', 'admin123')
+ON DUPLICATE KEY UPDATE `email`=`email`;
 ```
 
-**Option B — Using phpMyAdmin / MySQL Workbench:**
-1. Open phpMyAdmin (`http://localhost/phpmyadmin`).
-2. Create a database named `college_notice_board` (or let the script create it).
-3. Click the **Import** tab.
-4. Select `database/schema.sql` and click **Go**.
+</details>
 
 ---
 
@@ -218,9 +256,6 @@ Digital-Campus-Notice-Board/
 ├── LICENSE                         # MIT Open Source License
 ├── README.md                       # Repository documentation
 ├── build.xml                       # Ant build script
-├── database.sql                    # Root SQL initialization dump
-├── database/
-│   └── schema.sql                  # Automated schema and seed data script
 ├── nbproject/                      # NetBeans project configuration
 │   ├── ant-deploy.xml
 │   ├── build-impl.xml
